@@ -49,28 +49,27 @@
     echo "<table class='table table-hover'>"; 
     echo "<thead>"; 
     echo "<tr>"; 
-    echo "<th>#</th>"; 
-    echo "<th>Фамилия</th>"; 
-    echo "<th>Имя</th>"; 
-    echo "<th>Отчество</th>"; 
-    echo "<th>Адрес</th>"; 
-    echo "<th>Конт. номер</th>"; 
-    echo "<th>Действия</th>"; // Добавлено для кнопки "Изменить" 
+    echo "#"; 
+    echo "Фамилия"; 
+    echo "Имя"; 
+    echo "Отчество"; 
+    echo "Адрес"; 
+    echo "Конт. номер"; 
     echo "</tr>"; 
     echo "</thead>"; 
  
     while ($myrow = mysqli_fetch_array($r)) { 
-        echo "<tr>"; 
-        echo "<form action='../mods/update/Client.php' method='post'>"; // Измените путь на нужный 
-        echo "<td><input size='1' class='form-control input-sm' name='idClient' type='text' value='{$myrow['idClient']}' readonly='readonly'/></td>"; 
-        echo "<td><input size='8' class='form-control input-sm' name='FamCl' type='text' value='{$myrow['FamCl']}' required/></td>"; 
-        echo "<td><input size='7' class='form-control input-sm' name='ImyaCl' type='text' value='{$myrow['ImyaCl']}' required/></td>"; 
-        echo "<td><input size='8' class='form-control input-sm' name='OtchCl' type='text' value='{$myrow['OtchCl']}' required/></td>"; 
-        echo "<td><input size='24' class='form-control input-sm' name='AdrCl' type='text' value='{$myrow['AdrCl']}' required/></td>"; 
-        echo "<td><input size='9' class='form-control input-sm' name='KontCl' type='text' value='{$myrow['KontCl']}' required/></td>"; 
-        echo "<td><button type='submit' class='btn btn-warning'>Изменить</button></td>"; // Кнопка "Изменить" 
+        echo "<tr><td>"; 
+        echo "<form class='form-table' action='../mods/update/Client.php' method='post'>"; // Измените путь на нужный 
+        echo "<input size='1' class='form-control input-sm' name='idClient' type='text' value='{$myrow['idClient']}' readonly='readonly'/>"; 
+        echo "<input size='8' class='form-control input-sm' name='FamCl' type='text' value='{$myrow['FamCl']}' required/>"; 
+        echo "<input size='7' class='form-control input-sm' name='ImyaCl' type='text' value='{$myrow['ImyaCl']}' required/>"; 
+        echo "<input size='8' class='form-control input-sm' name='OtchCl' type='text' value='{$myrow['OtchCl']}' required/>"; 
+        echo "<input size='24' class='form-control input-sm' name='AdrCl' type='text' value='{$myrow['AdrCl']}' required/>"; 
+        echo "<input size='9' class='form-control input-sm' name='KontCl' type='text' value='{$myrow['KontCl']}' required/>"; 
+        echo "<button type='submit' class='btn btn-warning'>Изменить</button></td>"; // Кнопка "Изменить" 
         echo "</form>"; 
-        echo "</tr>"; 
+        echo "</td></tr>"; 
     } 
  
     echo "</table>"; 

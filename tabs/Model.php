@@ -62,20 +62,20 @@
 
     echo "<thead>";
     echo "<tr>";
-    echo "<th>#</th>";
-    echo "<th>Модель</th>";
-    echo "<th>Марка (ВК)</th>";
+    echo "#";
+    echo "Модель";
+    echo "Марка (ВК)";
     echo "</tr>";
     echo "</thead>";
     do {
-        echo "<tr>";
-        echo "<form action='../mods/update/Model.php' method='post'>"; // Измените путь на нужный 
-        echo "<th><input size='1' class='form-control input-sm' name='idModel' type='text' value='$myrow[idModel]' readonly='readonly'/></th>";
-        echo "<th><input size='15' class='form-control input-sm' name='NaimenModel' type='text' value='$myrow[NaimenModel]' required/></th>";
-        echo "<th><input size='5' class='form-control input-sm' name='Mark_idMark' type='text' value='$myrow[NaimenMark]' readonly='readonly'/></th>";
-        echo "<td><input type='submit' class='btn btn-warning' href='../mods/insert/Model.php?idModel=$myrow[idModel]'value='Изменить'/></td></form>";
+        echo "<tr><td>";
+        echo "<form class='form-table' action='../mods/update/Model.php' method='post'>"; // Измените путь на нужный 
+        echo "<input size='1' class='form-control input-sm' name='idModel' type='text' value='$myrow[idModel]' readonly='readonly'/>";
+        echo "<input size='15' class='form-control input-sm' name='NaimenModel' type='text' value='$myrow[NaimenModel]' required/>";
+        echo "<input size='5' class='form-control input-sm' name='Mark_idMark' type='text' value='$myrow[NaimenMark]' readonly='readonly'/>";
+        echo "<input type='submit' class='btn btn-warning' href='../mods/insert/Model.php?idModel=$myrow[idModel]'value='Изменить'/></td></";
         echo "</form>";
-        echo "</tr>";
+        echo "<td></tr>";
     } while ($myrow = mysqli_fetch_array($r));
     echo "</table>";
     ?>

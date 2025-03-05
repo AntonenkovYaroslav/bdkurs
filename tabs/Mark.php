@@ -33,18 +33,18 @@
 
     echo "<thead>";
     echo "<tr>";
-    echo "<th>#</th>";
-    echo "<th>Марка </th>";
+    echo "#";
+    echo "Марка ";
     echo "</tr>";
     echo "</thead>";
     do {
-        echo "<tr>";
-        echo "<form action='../mods/update/Mark.php' method='post'>"; // Добавили action для обновления  
-        echo "<th><input size='1' class='form-control input-sm' name='idMark' type='text' value='$myrow[idMark]' readonly='readonly'/></th>"; // idMark  
-        echo "<th><input size='15' class='form-control input-sm' name='NaimenMark' type='text' value='$myrow[NaimenMark]' required/></th>"; // переименуйте форму  
-        echo "<td><input type='submit' class='btn btn-warning' value='Изменить'/></td></form>";
-        echo "<td><a class='btn btn-danger' href='../mods/delete/Mark.php?idMark=$myrow[idMark]'>Удалить</a></td>";
-        echo "</tr>";
+        echo "<tr><td>";
+        echo "<form class='form-table' action='../mods/update/Mark.php' method='post'>"; // Добавили action для обновления  
+        echo "<input size='1' class='form-control input-sm' name='idMark' type='text' value='$myrow[idMark]' readonly='readonly'/>"; // idMark  
+        echo "<input size='15' class='form-control input-sm' name='NaimenMark' type='text' value='$myrow[NaimenMark]' required/>"; // переименуйте форму  
+        echo "<input type='submit' class='btn btn-warning' value='Изменить'/>";
+        echo "<button class='btn btn-danger' href='../mods/delete/Mark.php?idMark=$myrow[idMark]'>Удалить</button>";
+        echo "</form></td></tr>";
     } while ($myrow = mysqli_fetch_array($r));
     echo "</table>";
     ?>
