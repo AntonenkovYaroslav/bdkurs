@@ -1,0 +1,267 @@
+/*Шрифты*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css");
+
+/*Стили*/
+.btn-primary{
+    background: #EFC224;
+    border-style: none;
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    color: #FFFFFF;
+    background-color: #dbb223;
+    border-style: none;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
+header {
+    background-image: url('/img/long-exposure-train-4k-ue-1920x1080.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-fluid {
+    padding: 40px 120px 0px 120px;
+}
+
+.header-top {
+    align-items: center;
+}
+
+.active {
+    border-bottom: 1px solid #EFC224;
+}
+
+.nav_item {
+    margin-right: 40px;
+    float: left;
+    display: block;
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
+}
+
+.nav {
+    overflow: hidden;
+}
+
+.nav a,
+.header-sign a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    border-bottom: 1px solid #EFC224;
+    transition: 0.8s;
+}
+
+.nav a.active {
+    border-bottom: 1px solid #EFC224;
+    transition: 0.8s;
+}
+
+.header-nav,
+.header-sign {
+    display: flex;
+    justify-content: end;
+}
+
+.header-title {
+    margin-top: 107px;
+}
+
+.header-title span {
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 95px;
+    color: #FFFFFF;
+    text-align: center;
+
+}
+
+.header-search {
+    margin-top: 200px;
+}
+
+.header-search form {
+    display: flex;
+    justify-content: center;
+}
+
+.header-search input {
+    width: 264px;
+    height: 45.58px;
+    margin-right: 19px;
+}
+
+.header-search form button {
+    font-weight: 600;
+    background: #EFC224;
+    color: #000000;
+    line-height: 10px;
+    border-style: none;
+    width: 184px;
+}
+
+.header-search form button:hover {
+    color: #FFFFFF;
+    background-color: #EFC224;
+    border-style: none;
+}
+
+.section-title span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 20px;
+    color: #000000;
+}
+
+section {
+    padding-top: 30px;
+}
+
+.card-best {
+    margin-top: 60px;
+}
+
+.card-best-moscow,
+.card-best-piter,
+.card-best-adler {
+    width: 405px;
+}
+
+.best-city {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 20px;
+    color: #000000;
+    border-bottom: 1px solid #EFC224;
+    padding-bottom: 5px;
+}
+
+.card-best-moscow img,
+.card-best-piter img,
+.card-best-adler img {
+    padding-bottom: 18px;
+}
+
+.best-text {
+    padding-top: 9px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    color: #000000;
+    height: 171px;
+}
+
+.best-price {
+    padding-top: 45px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.news-title {
+    margin-top: 70px;
+}
+
+.news-title span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.card-news {
+    margin-top: 60px;
+}
+
+.news {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 310px;
+    padding-top: 63px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.news .news-content {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    color: #000000;
+    border-bottom: 1px solid #EFC224;
+    height: 230px;
+}
+
+.data {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #817C7C;
+}
+
+footer {
+    padding-top: 70px;
+}
+
+.footer {
+    border-top: 1px solid #EFC224;
+    padding-top: 17px;
+}
+
+.cop {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #817C7C;
+}
+
+.smi {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #817C7C;
+}
+
+.bi{
+    color: #817C7C;
+    font-size: 1.5rem;
+    padding-right: 15px;
+}
+
+.bi:hover{
+    color: #EFC224;
+    transition: 0.8s;
+}
