@@ -48,21 +48,9 @@
             margin: 5px 0;
             word-spacing: 2px;
         }
-        .content {
-            margin-left: 220px;
-            padding: 15px;
-        }
+        
     </style>  
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.sidebar .button').on('click', function(e) {
-                e.preventDefault();
-                var url = $(this).attr('href');
-                $('.content').load(url);
-            });
-        });
-    </script>
+    
 </head>  
 <body>  
 
@@ -82,8 +70,7 @@
     <a href="otchet.php" class="button">Отчет</a>
 </div>
 <div class="content">
-    <!-- Content will be loaded here -->
-    <h2>Здесь будут отображаться таблицы при нажатии кнопок</h2>
+ 
 </div>
 
 </body>  

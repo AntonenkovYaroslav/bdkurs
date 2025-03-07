@@ -49,12 +49,12 @@
     echo "<table class='table table-hover'>"; 
     echo "<thead>"; 
     echo "<tr>"; 
-    echo "#"; 
-    echo "Фамилия"; 
-    echo "Имя"; 
-    echo "Отчество"; 
-    echo "Адрес"; 
-    echo "Конт. номер"; 
+    echo "<th>#"; 
+    echo "<th>Фамилия"; 
+    echo "<th>Имя"; 
+    echo "<th>Отчество"; 
+    echo "<th>Адрес"; 
+    echo "<th>Конт. номер"; 
     echo "</tr>"; 
     echo "</thead>"; 
  

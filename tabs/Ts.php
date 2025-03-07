@@ -62,9 +62,9 @@
     do {
         echo "<tr>";
         echo "<form action='../mods/update/Ts.php' method='post'>"; // Измените путь на нужный 
-        echo "<th><input size='1' class='form-control input-sm' name='idTs' type='text' value='$myrow[idTs]' readonly='readonly'/></th>";
-        echo "<th><input size='15' class='form-control input-sm' name='GosNum' type='text' value='$myrow[GosNum]' required/></th>";
-        echo "<th><input size='5' class='form-control input-sm' name='Model_idModel' type='text' value='$myrow[NaimenModel]' readonly='readonly'/></th>";
+        echo "<td><input size='1' class='form-control input-sm' name='idTs' type='text' value='$myrow[idTs]' readonly='readonly'/></td>";
+        echo "<td><input size='15' class='form-control input-sm' name='GosNum' type='text' value='$myrow[GosNum]' required/></td>";
+        echo "<td><input size='5' class='form-control input-sm' name='Model_idModel' type='text' value='$myrow[NaimenModel]' readonly='readonly'/></td>";
         echo "<td><input type='submit' class='btn btn-warning' value='Изменить'/></td></form>";
         echo "</tr>";
     } while ($myrow = mysqli_fetch_array($r));

@@ -69,30 +69,30 @@ echo "<table class='table table-hover'>";
 
 echo "<thead>";
 echo "<tr>";
-echo "#";
-echo "Акт";
-echo "Дата чека ";
-echo "Запчасть";
-echo "Услуга ";
-echo "Стоимость ";
-echo "Описание проблемы";
+echo "<th>#</th>";
+echo "<th>Акт</th>";
+echo "<th>Дата чека </th>";
+echo "<th>Запчасть</th>";
+echo "<th>Услуга </th>";
+echo "<th>Стоимость </th>";
+echo "<th>Описание проблемы</th>";
 
 echo "</tr>";
 echo "</thead>";
 do 
 {
-    echo "<tr><td>";
+    echo "<tr>";
     echo "<form class='form-table'>";
-    echo "<input size='1' class='form-control input-sm' name='' type='text' value='$myrow[idChek]' readonly='readonly'/>";
-    echo "<input size='1' class='form-control input-sm' name='' type='text' value='$myrow[Akt]' readonly='readonly'/>";
-    echo "<input size='8' class='form-control input-sm' name='' type='text' value='$myrow[DateChek]' readonly='readonly'/>";
-    echo "<input size='20' class='form-control input-sm' name='' type='text' value='$myrow[NaimenZap]' readonly='readonly'/>";
-    echo "<input size='25' class='form-control input-sm' name='' type='text' value='$myrow[NaimenUsl]' readonly='readonly'/>";
-    echo "<input size='4' class='form-control input-sm' name='' type='text' value='$myrow[Cena]' readonly='readonly'/>";
-    echo "<input size='25' class='form-control input-sm' name='' type='text' value='$myrow[OpisProb]' readonly='readonly'/>";
+    echo "<th><input size='1' class='form-control input-sm' name='' type='text' value='$myrow[idChek]' readonly='readonly'/></th>";
+    echo "<th><input size='1' class='form-control input-sm' name='' type='text' value='$myrow[Akt]' readonly='readonly'/></th>";
+    echo "<th><input size='8' class='form-control input-sm' name='' type='text' value='$myrow[DateChek]' readonly='readonly'/></th>";
+    echo "<th><input size='20' class='form-control input-sm' name='' type='text' value='$myrow[NaimenZap]' readonly='readonly'/></th>";
+    echo "<th><input size='25' class='form-control input-sm' name='' type='text' value='$myrow[NaimenUsl]' readonly='readonly'/></th>";
+    echo "<th><input size='4' class='form-control input-sm' name='' type='text' value='$myrow[Cena]' readonly='readonly'/></th>";
+    echo "<th><input size='25' class='form-control input-sm' name='' type='text' value='$myrow[OpisProb]' readonly='readonly'/></th>";
     //echo "<input type='submit' class='btn btn-warning' value='Изменить'/>
     echo "</form>";
-    echo "</td></tr>";
+    echo "</tr>";
 }while ($myrow = mysqli_fetch_array($r));
 echo "</table>";
 ?>
