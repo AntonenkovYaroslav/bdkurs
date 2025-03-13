@@ -140,6 +140,7 @@
     echo "<th>#</th>";
     echo "<th>Марка</th>";
     echo "<th>Действие</th>";
+    echo "<th>Удаление</th>";
     echo "</tr>";
     echo "</thead>";
     echo "<tbody>";

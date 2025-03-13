@@ -94,6 +94,8 @@ $connect->close();
     <form action="tabs/Zayavka.php"><button type="submit" class="button"><i class="fas fa-file-alt"></i> Заявка</button></form>
     <form action="tabs/Chek.php"><button type="submit" class="button"><i class="fas fa-receipt"></i> Чек</button></form>
     <form action="otchet.php"><button type="submit" class="button"><i class="fas fa-chart-line"></i> Отчет</button></form>
+    <form action="logout.php" method="post"><button type="submit" class="button"><i class="fas fa-sign-out-alt"></i> Выйти</button></form>
 </div>
+
 </body>
 </html>
