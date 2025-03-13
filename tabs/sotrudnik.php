@@ -1,26 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Справочник - Сотрудники</title>
-    <!-- Bootstrap CSS -->
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-     <link href="../css/admin1.css" rel="stylesheet">
+    <link href="../css/admin1.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            display: inline-block;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        tr:hover {
+            background-color: #e9e9e9;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        .btn {
+            padding-top: 6px;
+            padding-bottom: 6px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 10px;
+        }
+
+        .btn-dark {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 10px;
+
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: black;
+            width: 100%;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            width: 100%;
+            text-align: center;
+        }
+
+        td form, td a {
+            display: block;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Модальное окно "Добавление" -->
     <h3>Добавить сотрудника</h3>
     <form action='../mods/insert/Sotr.php' method='post'>
-        <input type="text" name="idSotr" placeholder="idSotr" required>
-        <input type="text" name="FamSotr" placeholder="Фамилия" required>
-        <input type="text" name="ImyaSotr" placeholder="Имя" required>
-        <input type="text" name="OtchSotr" placeholder="Отчество" required>
-        <input type="text" name="KontSotr" placeholder="Контакт" required>
-        <select class="select" name="idStat" required>
+        <input type="text" name="idSotr" placeholder="idSotr" class="form-control" required>
+        <input type="text" name="FamSotr" placeholder="Фамилия" class="form-control" required>
+        <input type="text" name="ImyaSotr" placeholder="Имя" class="form-control" required>
+        <input type="text" name="OtchSotr" placeholder="Отчество" class="form-control" required>
+        <input type="text" name="KontSotr" placeholder="Контакт" class="form-control" required>
+        <select class="form-control" name="idStat" required>
             <?php
             include("Db.php");
             $query = "SELECT * FROM status";
@@ -35,22 +154,22 @@
             }
             ?>
         </select>
-        <input type="text" name="Login" placeholder="Логин" required>
-        <input type="text" name="password" placeholder="Пароль" required>
-        <button type="submit" class="btn btn-success" line-height="3">Добавить новую запись</button>
-        <?php $targetFile = '../home.php'; ?>
-        <a href="<?php echo $targetFile; ?>" class="btn btn-dark">Назад</a>
+        <input type="text" name="Login" placeholder="Логин" class="form-control" required>
+        <input type="text" name="password" placeholder="Пароль" class="form-control" required>
+        <button type="submit" class="btn btn-success">Добавить новую запись</button>
+        <a href="../home.php" class="btn btn-dark">Назад</a>
     </form>
 
     <?php
     include("../tabs/Db.php");
     $r = mysqli_query($connect, "SELECT idSotr, FamSotr, ImyaSotr, OtchSotr, kontSotr, NaimenStat, Login, password FROM sotrudnik
 join status on sotrudnik.idStat = status.idStat order by sotrudnik.idSotr;");
-    $myrow = mysqli_fetch_array($r);
+    if (!$r) {
+        die("Query failed: " . mysqli_error($connect));
+    }
     echo "<h4>Справочник - Сотрудники</h4>";
     echo "<center>";
-    echo "<table class='form-table'>";
-
+    echo "<table class='table table-hover'>";
     echo "<thead>";
     echo "<tr>";
     echo "<th>#</th>";
@@ -64,21 +183,25 @@ join status on sotrudnik.idStat = status.idStat order by sotrudnik.idSotr;");
     echo "<th>Действия</th>";
     echo "</tr>";
     echo "</thead>";
-    do {
+    echo "<tbody>";
+    while ($myrow = mysqli_fetch_array($r)) {
         echo "<tr>";
         echo "<form action='../mods/update/Sotr.php' method='post'>";
-        echo "<td><input size='1' class='form-control input-sm' name='idSotr' type='text' value='$myrow[idSotr]' readonly='readonly'/></td>";
-        echo "<td><input size='1' class='form-control input-sm' name='FamSotr' type='text' value='$myrow[FamSotr]' required/></td>";
-        echo "<td><input size='1' class='form-control input-sm' name='ImyaSotr' type='text' value='$myrow[ImyaSotr]' required/></td>";
-        echo "<td><input size='1' class='form-control input-sm' name='OtchSotr' type='text' value='$myrow[OtchSotr]' required/></td>";
-        echo "<td><input size='1' class='form-control input-sm' name='kontSotr' type='text' value='$myrow[kontSotr]' required/></td>";
-        echo "<td><input size='1' class='form-control input-sm' name='NaimenStat' type='text' value='$myrow[NaimenStat]' readonly='readonly'/></td>";
-        echo "<td><input size='1' class='form-control input-sm' name='Login' type='text' value='$myrow[Login]' required/></td>";
-        echo "<td><input size='1' class='form-control input-sm' name='password' type='text' value='$myrow[password]' required/></td>";
+        echo "<td><input size='1' class='form-control' name='idSotr' type='text' value='$myrow[idSotr]' readonly='readonly'/></td>";
+        echo "<td><input size='15' class='form-control' name='FamSotr' type='text' value='$myrow[FamSotr]' required/></td>";
+        echo "<td><input size='15' class='form-control' name='ImyaSotr' type='text' value='$myrow[ImyaSotr]' required/></td>";
+        echo "<td><input size='15' class='form-control' name='OtchSotr' type='text' value='$myrow[OtchSotr]' required/></td>";
+        echo "<td><input size='15' class='form-control' name='kontSotr' type='text' value='$myrow[kontSotr]' required/></td>";
+        echo "<td><input size='15' class='form-control' name='NaimenStat' type='text' value='$myrow[NaimenStat]' readonly='readonly'/></td>";
+        echo "<td><input size='15' class='form-control' name='Login' type='text' value='$myrow[Login]' required/></td>";
+        echo "<td><input size='15' class='form-control' name='password' type='text' value='$myrow[password]' required/></td>";
         echo "<td><input type='submit' class='btn btn-warning' value='Изменить'/></td>";
-        echo "</tr></form>";
-    } while ($myrow = mysqli_fetch_array($r));
+        echo "</form>";
+        echo "</tr>";
+    }
+    echo "</tbody>";
     echo "</table>";
+    mysqli_close($connect);
     ?>
 </body>
 

@@ -1,23 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Bootstrap CSS -->
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link href="../css/admin1.css" rel="stylesheet">
+    <title>Заявка</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            display: inline-block;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        tr:hover {
+            background-color: #e9e9e9;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-dark {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: black;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Модальное окно добавление  -->
+    <h3>Добавить Заявку</h3>
     <form action="../mods/insert/Zayavka.php" method="post">
-        <input type="text" name="idZ" placeholder="idZ" class="textbox" required>
-        <input type="date" name="DateZ" required>
-        <input type="text" name="OpisProb" placeholder="Описание проблемы" class="textbox" required>
-        <select class="select" name="Ts_idTs" required>
+        <input type="text" name="idZ" placeholder="idZ" class="form-control" required>
+        <input type="date" name="DateZ" class="form-control" required>
+        <input type="text" name="OpisProb" placeholder="Описание проблемы" class="form-control" required>
+        <select class="form-control" name="Ts_idTs" required>
             <option value="">Выберите Госномер ТС</option>
             <?php
             include("Db.php");
@@ -33,7 +136,7 @@
             mysqli_close($connect);
             ?>
         </select>
-        <select class="select" name="Client_idClient" required>
+        <select class="form-control" name="Client_idClient" required>
             <option value="">Выберите Клиента</option>
             <?php
             include("Db.php");
@@ -49,8 +152,7 @@
             mysqli_close($connect);
             ?>
         </select>
-
-        <select class="select" name="Sotrudnik_idSotrudnik" required>
+        <select class="form-control" name="Sotrudnik_idSotrudnik" required>
             <option value="">Выберите сотрудника</option>
             <?php
             include("Db.php");
@@ -66,61 +168,55 @@
             mysqli_close($connect);
             ?>
         </select>
-        <button type="submit" class="btn btn-success" line-height="3">Добавить запись</button>
-        <?php
-
-        $targetFile = '../home.php';
-        ?>
-
-        <a href="<?php echo $targetFile; ?>" class="btn btn-dark">Назад</a>
+        <button type="submit" class="btn btn-success">Добавить запись</button>
+        <a href="../home.php" class="btn btn-dark">Назад</a>
     </form>
 
     <?php
-
-    // Настройки подключения к базе данных  
     include("../tabs/Db.php");
     $r = mysqli_query(
         $connect,
         "SELECT z.idZ, z.DateZ, z.OpisProb, m.NaimenModel,t.GosNum , CONCAT(c.FamCl, ' ', c.ImyaCl) AS FullNameClient, s.FamSotr  FROM bdkurs.zayavka z  
-    JOIN bdkurs.ts t ON z.Ts_idTs = t.idTs  
-    JOIN bdkurs.model m ON t.Model_idModel = m.idModel  
-    JOIN bdkurs.client c ON z.Client_idClient = c.idClient  
-    JOIN bdkurs.sotrudnik s ON z.Sotrudnik_idSotrudnik = s.idSotr
-    order by idZ asc"
+        JOIN bdkurs.ts t ON z.Ts_idTs = t.idTs  
+        JOIN bdkurs.model m ON t.Model_idModel = m.idModel  
+        JOIN bdkurs.client c ON z.Client_idClient = c.idClient  
+        JOIN bdkurs.sotrudnik s ON z.Sotrudnik_idSotrudnik = s.idSotr
+        ORDER BY idZ ASC"
     );
     $myrow = mysqli_fetch_array($r);
     echo "<h4>Справочник - Заявка</h4>";
     echo "<center>";
     echo "<table class='table table-hover'>";
-
     echo "<thead>";
     echo "<tr>";
-    echo "#";
-    echo "Дата Заявки";
-    echo "Описание проблемы";
-    echo "Модель";
-    echo "Госномер";
-    echo "ФИ клиента";
-    echo "Фамилия сотрудника";
+    echo "<th>#</th>";
+    echo "<th>Дата Заявки</th>";
+    echo "<th>Описание проблемы</th>";
+    echo "<th>Модель</th>";
+    echo "<th>Госномер</th>";
+    echo "<th>ФИ клиента</th>";
+    echo "<th>Фамилия сотрудника</th>";
+    echo "<th>Действие</th>";
     echo "</tr>";
     echo "</thead>";
+    echo "<tbody>";
     do {
-        echo "<tr><td>";
+        echo "<tr>";
         echo "<form class='form-table' action='../mods/update/Zayavka.php' method='post'>";
-        echo "<input size='1' class='form-control input-sm' name='idZ' type='text' value='$myrow[idZ]' readonly='readonly'/>";
-        echo "<input size='15' class='form-control input-sm' name='' type='text' value='$myrow[DateZ]' readonly='readonly'/>";
-        echo "<input size='30' class='form-control input-sm' name='OpisProb' type='text' value='$myrow[OpisProb]' required/>";
-        echo "<input size='5' class='form-control input-sm' name='' type='text' value='$myrow[NaimenModel]' readonly='readonly'/>";
-        echo "<input size='7' class='form-control input-sm' name='' type='text' value='$myrow[GosNum]' readonly='readonly'/>";
-        echo "<input size='35' class='form-control input-sm' name='' type='text' value='$myrow[FullNameClient]' readonly='readonly'/>";
-        echo "<input size='30' class='form-control input-sm' name='' type='text' value='$myrow[FamSotr]' readonly='readonly'/>";
-        echo "<input type='submit' class='btn btn-warning' value='Изменить'/></td></form>";
-        echo "</td></tr>";
+        echo "<td><input size='1' class='form-control' name='idZ' type='text' value='$myrow[idZ]' readonly='readonly'/></td>";
+        echo "<td><input size='15' class='form-control' name='' type='text' value='$myrow[DateZ]' readonly='readonly'/></td>";
+        echo "<td><input size='30' class='form-control' name='OpisProb' type='text' value='$myrow[OpisProb]' required/></td>";
+        echo "<td><input size='5' class='form-control' name='' type='text' value='$myrow[NaimenModel]' readonly='readonly'/></td>";
+        echo "<td><input size='7' class='form-control' name='' type='text' value='$myrow[GosNum]' readonly='readonly'/></td>";
+        echo "<td><input size='35' class='form-control' name='' type='text' value='$myrow[FullNameClient]' readonly='readonly'/></td>";
+        echo "<td><input size='30' class='form-control' name='' type='text' value='$myrow[FamSotr]' readonly='readonly'/></td>";
+        echo "<td><input type='submit' class='btn btn-warning' value='Изменить'/></td>";
+        echo "</form>";
+        echo "</tr>";
     } while ($myrow = mysqli_fetch_array($r));
+    echo "</tbody>";
     echo "</table>";
-
     ?>
-
 </body>
 
 </html>

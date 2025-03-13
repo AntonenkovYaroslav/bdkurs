@@ -10,8 +10,8 @@
     <title>
         <?php
 
-        $data_ot = $_GET['DateZ'];
-        $data_po = $_GET['DateChek'];
+        $data_ot = isset($_GET['DateZ']) ? $_GET['DateZ'] : 'не указано';
+        $data_po = isset($_GET['DateChek']) ? $_GET['DateChek'] : 'не указано';
         echo "Отчет за период с $data_ot по $data_po";
         ?>
     </title>
@@ -65,6 +65,9 @@ $targetFile = '../home.php';
     echo "</thead>";
 
     include("tabs/Db.php");
+    if (!$connect) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
     $r = mysqli_query($connect, "SELECT chek.Akt as Akt, zayavka.DateZ AS DateZ, model.NaimenModel AS ModelName, mark.NaimenMark AS MarkName, 
     GROUP_CONCAT(DISTINCT zapch.NaimenZap) AS UsedParts, SUM(zapch.CenaZap) AS TotalPartsCost, 
     GROUP_CONCAT(DISTINCT typeusl.NaimenUsl) AS UsedServices, SUM(typeusl.CenaUsl) AS TotalServicesCost, SUM(zapch.CenaZap) + SUM(typeusl.CenaUsl) AS TotalRemSum 
