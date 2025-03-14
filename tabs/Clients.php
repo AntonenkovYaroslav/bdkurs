@@ -108,6 +108,9 @@
         }
 
         .btn-warning {
+            display: block;
+            text-align: center;
+            width: 100%;
             background-color: #ffc107;
             color: black;
         }
@@ -115,17 +118,19 @@
 </head>
 
 <body>
-    <h3>Добавить клиента</h3>
-    <form action='../mods/insert/Client.php' method='post'>
-        <input type="text" name="idClient" placeholder="idClient" class="form-control" required>
-        <input type="text" name="FamCl" placeholder="Фамилия" class="form-control" required>
-        <input type="text" name="ImyaCl" placeholder="Имя" class="form-control" required>
-        <input type="text" name="OtchCl" placeholder="Отчество" class="form-control" required>
-        <input type="text" name="AdrCl" placeholder="Адрес" class="form-control" required>
-        <input type="text" name="KontCl" placeholder="Конт. номер" class="form-control" required>
-        <button type="submit" class="btn btn-success">Добавить новую запись</button>
-        <a href="../home.php" class="btn btn-dark">Назад</a>
-    </form>
+    <div class="modal">
+        <h3>Добавить клиента</h3>
+        <form action='../mods/insert/Client.php' method='post'>
+            <input type="text" name="idClient" placeholder="idClient" class="form-control" required>
+            <input type="text" name="FamCl" placeholder="Фамилия" class="form-control" required>
+            <input type="text" name="ImyaCl" placeholder="Имя" class="form-control" required>
+            <input type="text" name="OtchCl" placeholder="Отчество" class="form-control" required>
+            <input type="text" name="AdrCl" placeholder="Адрес" class="form-control" required>
+            <input type="text" name="KontCl" placeholder="Конт. номер" class="form-control" required>
+            <button type="submit" class="btn btn-success">Добавить новую запись</button>
+            <a href="../home.php" class="btn btn-dark">Назад</a>
+        </form>
+    </div>
 
     <?php
     include("../tabs/Db.php");

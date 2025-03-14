@@ -120,13 +120,15 @@
 </head>
 
 <body>
-    <h3>Добавить марку</h3>
-    <form action='../mods/insert/Mark.php' method='post'>
-        <input type="text" name="idMark" placeholder="id" class="form-control" required>
-        <input type="text" name="NaimenMark" placeholder="Марка" class="form-control" required>
-        <button type="submit" class="btn btn-success">Добавить новую запись</button>
-        <a href="../home.php" class="btn btn-dark">Назад</a>
-    </form>
+    <div class="modal">
+        <h3>Добавить марку</h3>
+        <form action='../mods/insert/Mark.php' method='post'>
+            <input type="text" name="idMark" placeholder="id" class="form-control" required>
+            <input type="text" name="NaimenMark" placeholder="Марка" class="form-control" required>
+            <button type="submit" class="btn btn-success">Добавить новую запись</button>
+            <a href="../home.php" class="btn btn-dark">Назад</a>
+        </form>
+    </div>
 
     <?php
     include("../tabs/Db.php");

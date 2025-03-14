@@ -46,7 +46,7 @@
         }
 
         form {
-            display: inline-block;
+            display: flex;
         }
 
         table {
@@ -83,9 +83,10 @@
         }
 
         .form-control {
-            width: 100%;
+            display: flex;
+            
             padding: 5px;
-            margin: 5px 0;
+            gap: 5px;
         }
 
         .btn {
@@ -128,37 +129,57 @@
             display: block;
             width: 100%;
         }
+        div{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        } 
+
+        .modal {
+            display: flex;
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 10px; 
+            background-color: #fff; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            
+        }
+        
     </style>
 </head>
 
 <body>
-    <h3>Добавить сотрудника</h3>
-    <form action='../mods/insert/Sotr.php' method='post'>
-        <input type="text" name="idSotr" placeholder="idSotr" class="form-control" required>
-        <input type="text" name="FamSotr" placeholder="Фамилия" class="form-control" required>
-        <input type="text" name="ImyaSotr" placeholder="Имя" class="form-control" required>
-        <input type="text" name="OtchSotr" placeholder="Отчество" class="form-control" required>
-        <input type="text" name="KontSotr" placeholder="Контакт" class="form-control" required>
-        <select class="form-control" name="idStat" required>
-            <?php
-            include("Db.php");
-            $query = "SELECT * FROM status";
-            $result = mysqli_query($connect, $query);
-            echo "<option selected value='0'>выберите должность</option>";
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $idStat = $row['idStat'];
-                    $nameS = $row['NaimenStat'];
-                    echo "<option value='$idStat'>$nameS</option>";
+    <div class="modal" >
+        <h3>Добавить сотрудника</h3>
+        <form action='../mods/insert/Sotr.php' method='post' style="display: flex; flex-direction: column; gap: 10px;">
+            <input type="text" name="idSotr" placeholder="idSotr" class="form-control" required>
+            <input type="text" name="FamSotr" placeholder="Фамилия" class="form-control" required>
+            <input type="text" name="ImyaSotr" placeholder="Имя" class="form-control" required>
+            <input type="text" name="OtchSotr" placeholder="Отчество" class="form-control" required>
+            <input type="text" name="KontSotr" placeholder="Контакт" class="form-control" required>
+            <select class="form-control" name="idStat" required>
+                <?php
+                include("Db.php");
+                $query = "SELECT * FROM status";
+                $result = mysqli_query($connect, $query);
+                echo "<option selected value='0'>выберите должность</option>";
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $idStat = $row['idStat'];
+                        $nameS = $row['NaimenStat'];
+                        echo "<option value='$idStat'>$nameS</option>";
+                    }
                 }
-            }
-            ?>
-        </select>
-        <input type="text" name="Login" placeholder="Логин" class="form-control" required>
-        <input type="text" name="password" placeholder="Пароль" class="form-control" required>
-        <button type="submit" class="btn btn-success">Добавить новую запись</button>
-        <a href="../home.php" class="btn btn-dark">Назад</a>
-    </form>
+                ?>
+            </select>
+            <input type="text" name="Login" placeholder="Логин" class="form-control" required>
+            <input type="text" name="password" placeholder="Пароль" class="form-control" required>
+            <button type="submit" class="btn btn-success">Добавить новую запись</button>
+            <a href="../home.php" class="btn btn-dark">Назад</a>
+        </form>
+    </div>
 
     <?php
     include("../tabs/Db.php");

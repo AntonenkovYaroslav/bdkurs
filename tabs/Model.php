@@ -115,29 +115,31 @@
 </head>
 
 <body>
-    <h3>Добавить модель</h3>
-    <form action='../mods/insert/Model.php' method='post'>
-        <input type="text" name="idModel" placeholder="idModel" class="form-control" required>
-        <input type="text" name="NaimenModel" placeholder="Модель" class="form-control" required>
-        <select class="form-control" name="Mark_idMark" required>
-            <option value="">Выберите модель</option>
-            <?php
-            include("Db.php");
-            $query = "SELECT * FROM mark";
-            $result = mysqli_query($connect, $query);
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $idMark = $row['idMark'];
-                    $nameO = $row['NaimenMark'];
-                    echo "<option value='$idMark'>$nameO</option>";
+    <div class="modal">
+        <h3>Добавить модель</h3>
+        <form action='../mods/insert/Model.php' method='post'>
+            <input type="text" name="idModel" placeholder="idModel" class="form-control" required>
+            <input type="text" name="NaimenModel" placeholder="Модель" class="form-control" required>
+            <select class="form-control" name="Mark_idMark" required>
+                <option value="">Выберите модель</option>
+                <?php
+                include("Db.php");
+                $query = "SELECT * FROM mark";
+                $result = mysqli_query($connect, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $idMark = $row['idMark'];
+                        $nameO = $row['NaimenMark'];
+                        echo "<option value='$idMark'>$nameO</option>";
+                    }
                 }
-            }
-            mysqli_close($connect);
-            ?>
-        </select>
-        <button type="submit" class="btn btn-success">Добавить новую запись</button>
-        <a href="../home.php" class="btn btn-dark">Назад</a>
-    </form>
+                mysqli_close($connect);
+                ?>
+            </select>
+            <button type="submit" class="btn btn-success">Добавить новую запись</button>
+            <a href="../home.php" class="btn btn-dark">Назад</a>
+        </form>
+    </div>
 
     <?php
     include("../tabs/Db.php");

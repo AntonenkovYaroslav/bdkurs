@@ -116,30 +116,32 @@
 </head>
 
 <body>
-    <h3>Добавить услугу</h3>
-    <form action="../mods/insert/TypeUsl.php" method="post">
-        <input type="text" name="idUsl" placeholder="idUsl" class="form-control" required>
-        <input type="text" name="NaimenUsl" placeholder="Наименование услуги" class="form-control" required>
-        <input type="text" name="CenaUsl" placeholder="Цена услуги" class="form-control" required>
-        <select class="form-control" name="TypeRab_idRab" required>
-            <option value="">Выберите тип</option>
-            <?php
-            include("Db.php");
-            $query = "SELECT * FROM TypeRab";
-            $res = mysqli_query($connect, $query);
-            if (mysqli_num_rows($res) > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $idRab = $row['idRab'];
-                    $SelVal = $row['NaimenRab'];
-                    echo "<option value='$idRab'>$SelVal</option>";
+    <div class="modal">
+        <h3>Добавить услугу</h3>
+        <form action="../mods/insert/TypeUsl.php" method="post">
+            <input type="text" name="idUsl" placeholder="idUsl" class="form-control" required>
+            <input type="text" name="NaimenUsl" placeholder="Наименование услуги" class="form-control" required>
+            <input type="text" name="CenaUsl" placeholder="Цена услуги" class="form-control" required>
+            <select class="form-control" name="TypeRab_idRab" required>
+                <option value="">Выберите тип</option>
+                <?php
+                include("Db.php");
+                $query = "SELECT * FROM TypeRab";
+                $res = mysqli_query($connect, $query);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        $idRab = $row['idRab'];
+                        $SelVal = $row['NaimenRab'];
+                        echo "<option value='$idRab'>$SelVal</option>";
+                    }
                 }
-            }
-            mysqli_close($connect);
-            ?>
-        </select>
-        <button type="submit" class="btn btn-success">Добавить новую запись</button>
-        <a href="../home.php" class="btn btn-dark">Назад</a>
-    </form>
+                mysqli_close($connect);
+                ?>
+            </select>
+            <button type="submit" class="btn btn-success">Добавить новую запись</button>
+            <a href="../home.php" class="btn btn-dark">Назад</a>
+        </form>
+    </div>
 
     <?php
     include("../tabs/Db.php");

@@ -131,13 +131,17 @@
     </style>
 </head>
 <body>
-    <h3>Добавить Должность</h3>
-    <form action="../mods/insert/Status.php" method='post'>
-        <input type="text" name="idStat" placeholder="idStat" class="form-control" required>
-        <input type="text" name="NaimenStat" placeholder="Должность" class="form-control" required>
-        <button type="submit" class="btn btn-success">Добавить новую запись</button>
-        <a href="../home.php" class="btn btn-dark">Назад</a>
-    </form>
+    <div class="modal">
+        <h3>Добавить Должность</h3>
+        <form action="../mods/insert/Status.php" method='post'>
+            <input type="text" name="idStat" placeholder="idStat" class="form-control" required>
+            <input type="text" name="NaimenStat" placeholder="Должность" class="form-control" required>
+            <button type="submit" class="btn btn-success">Добавить новую запись</button>
+            <a href="../home.php" class="btn btn-dark">Назад</a>
+        </form>
+    </div>
+    
+    
 
     <?php
     include("../tabs/Db.php");

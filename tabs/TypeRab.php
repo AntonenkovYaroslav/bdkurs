@@ -118,16 +118,18 @@
         }
 
         .btn-danger {
+            display: block;
             background-color: #dc3545;
             color: white;
-            width: 170px;
+            width: 100%;
             text-align: center;
-            padding: 5px 25px 5px 25px;
+           
         }
     </style>
 </head>
 
 <body>
+    <div class="modal">
     <h3>Добавить тип работы</h3>
     <form action="../mods/insert/TypeRab.php" method="post">
         <input type="text" name="idRab" placeholder="idRab" class="form-control" required>
@@ -135,6 +137,7 @@
         <button type="submit" class="btn btn-success">Добавить новую запись</button>
         <a href="../home.php" class="btn btn-dark">Назад</a>
     </form>
+    </div>
 
     <?php
     include("Db.php");

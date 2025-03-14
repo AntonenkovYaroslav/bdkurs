@@ -115,62 +115,64 @@
 </head>
 
 <body>
-    <h3>Добавить Заявку</h3>
-    <form action="../mods/insert/Zayavka.php" method="post">
-        <input type="text" name="idZ" placeholder="idZ" class="form-control" required>
-        <input type="date" name="DateZ" class="form-control" required>
-        <input type="text" name="OpisProb" placeholder="Описание проблемы" class="form-control" required>
-        <select class="form-control" name="Ts_idTs" required>
-            <option value="">Выберите Госномер ТС</option>
-            <?php
-            include("Db.php");
-            $query = "SELECT * FROM Ts";
-            $res = mysqli_query($connect, $query);
-            if (mysqli_num_rows($res) > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $idTs = $row['idTs'];
-                    $GosNum = $row['GosNum'];
-                    echo "<option value ='$idTs'>$GosNum</option> ";
+    <div class="modal">
+        <h3>Добавить Заявку</h3>
+        <form action="../mods/insert/Zayavka.php" method="post">
+            <input type="text" name="idZ" placeholder="idZ" class="form-control" required>
+            <input type="date" name="DateZ" class="form-control" required>
+            <input type="text" name="OpisProb" placeholder="Описание проблемы" class="form-control" required>
+            <select class="form-control" name="Ts_idTs" required>
+                <option value="">Выберите Госномер ТС</option>
+                <?php
+                include("Db.php");
+                $query = "SELECT * FROM Ts";
+                $res = mysqli_query($connect, $query);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        $idTs = $row['idTs'];
+                        $GosNum = $row['GosNum'];
+                        echo "<option value ='$idTs'>$GosNum</option> ";
+                    }
                 }
-            }
-            mysqli_close($connect);
-            ?>
-        </select>
-        <select class="form-control" name="Client_idClient" required>
-            <option value="">Выберите Клиента</option>
-            <?php
-            include("Db.php");
-            $query = "SELECT * FROM Client";
-            $res = mysqli_query($connect, $query);
-            if (mysqli_num_rows($res) > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $idClient = $row['idClient'];
-                    $FamCl = $row['FamCl'];
-                    echo "<option value ='$idClient'>$FamCl</option> ";
+                mysqli_close($connect);
+                ?>
+            </select>
+            <select class="form-control" name="Client_idClient" required>
+                <option value="">Выберите Клиента</option>
+                <?php
+                include("Db.php");
+                $query = "SELECT * FROM Client";
+                $res = mysqli_query($connect, $query);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        $idClient = $row['idClient'];
+                        $FamCl = $row['FamCl'];
+                        echo "<option value ='$idClient'>$FamCl</option> ";
+                    }
                 }
-            }
-            mysqli_close($connect);
-            ?>
-        </select>
-        <select class="form-control" name="Sotrudnik_idSotrudnik" required>
-            <option value="">Выберите сотрудника</option>
-            <?php
-            include("Db.php");
-            $query = "SELECT * FROM sotrudnik";
-            $res = mysqli_query($connect, $query);
-            if (mysqli_num_rows($res) > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $idSotr = $row['idSotr'];
-                    $FamSotr = $row['FamSotr'];
-                    echo "<option value ='$idSotr'>$FamSotr</option> ";
+                mysqli_close($connect);
+                ?>
+            </select>
+            <select class="form-control" name="Sotrudnik_idSotrudnik" required>
+                <option value="">Выберите сотрудника</option>
+                <?php
+                include("Db.php");
+                $query = "SELECT * FROM sotrudnik";
+                $res = mysqli_query($connect, $query);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        $idSotr = $row['idSotr'];
+                        $FamSotr = $row['FamSotr'];
+                        echo "<option value ='$idSotr'>$FamSotr</option> ";
+                    }
                 }
-            }
-            mysqli_close($connect);
-            ?>
-        </select>
-        <button type="submit" class="btn btn-success">Добавить запись</button>
-        <a href="../home.php" class="btn btn-dark">Назад</a>
-    </form>
+                mysqli_close($connect);
+                ?>
+            </select>
+            <button type="submit" class="btn btn-success">Добавить запись</button>
+            <a href="../home.php" class="btn btn-dark">Назад</a>
+        </form>
+    </div>
 
     <?php
     include("../tabs/Db.php");

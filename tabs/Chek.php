@@ -115,46 +115,48 @@
 </head>
 
 <body>
-    <h3>Добавить чек</h3>
-    <form action="../mods/insert/Chek.php" method="post">
-        <input type="text" name="idChek" placeholder="idChek" class="form-control" required>
-        <input type="text" name="Akt" placeholder="Акт" class="form-control" required>
-        <input type="date" name="DateChek" class="form-control" required>
-        <select class="form-control" name="Zayavka_idZ" required>
-            <option value="">выберите Заявку</option>
-            <?php
-            include("Db.php");
-            $query = "SELECT * FROM zayavka";
-            $res = mysqli_query($connect, $query);
-            if (mysqli_num_rows($res) > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $idZ = $row['idZ'];
-                    $SelVal = $row['DateZ'];
-                    echo "<option value='$idZ'>$SelVal</option>";
+    <div class="modal">
+        <h3>Добавить чек</h3>
+        <form action="../mods/insert/Chek.php" method="post">
+            <input type="text" name="idChek" placeholder="idChek" class="form-control" required>
+            <input type="text" name="Akt" placeholder="Акт" class="form-control" required>
+            <input type="date" name="DateChek" class="form-control" required>
+            <select class="form-control" name="Zayavka_idZ" required>
+                <option value="">выберите Заявку</option>
+                <?php
+                include("Db.php");
+                $query = "SELECT * FROM zayavka";
+                $res = mysqli_query($connect, $query);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        $idZ = $row['idZ'];
+                        $SelVal = $row['DateZ'];
+                        echo "<option value='$idZ'>$SelVal</option>";
+                    }
                 }
-            }
-            mysqli_close($connect);
-            ?>
-        </select>
-        <select class="form-control" name="Zapch_idZap" required>
-            <option value="">выберите Запчасть</option>
-            <?php
-            include("Db.php");
-            $query = "SELECT * FROM zapch";
-            $res = mysqli_query($connect, $query);
-            if (mysqli_num_rows($res) > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $idZap = $row['idZap'];
-                    $SelVal = $row['NaimenZap'];
-                    echo "<option value='$idZap'>$SelVal</option>";
+                mysqli_close($connect);
+                ?>
+            </select>
+            <select class="form-control" name="Zapch_idZap" required>
+                <option value="">выберите Запчасть</option>
+                <?php
+                include("Db.php");
+                $query = "SELECT * FROM zapch";
+                $res = mysqli_query($connect, $query);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        $idZap = $row['idZap'];
+                        $SelVal = $row['NaimenZap'];
+                        echo "<option value='$idZap'>$SelVal</option>";
+                    }
                 }
-            }
-            mysqli_close($connect);
-            ?>
-        </select>
-        <button type="submit" class="btn btn-success">Добавить запись</button>
-        <a href="../home.php" class="btn btn-dark">Назад</a>
-    </form>
+                mysqli_close($connect);
+                ?>
+            </select>
+            <button type="submit" class="btn btn-success">Добавить запись</button>
+            <a href="../home.php" class="btn btn-dark">Назад</a>
+        </form>
+    </div>
 
     <?php
     include("../tabs/Db.php");
