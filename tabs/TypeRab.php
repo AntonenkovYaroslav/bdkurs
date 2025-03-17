@@ -15,40 +15,6 @@
             color: #333;
         }
 
-        .button {
-            padding: 15px 30px;
-            font-size: 18px;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            margin: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        form {
-            display: inline-block;
-        }
-
         table {
             width: 80%;
             margin: 20px auto;
@@ -63,6 +29,7 @@
         th, td {
             padding: 10px;
             border-bottom: 1px solid #ddd;
+            text-align: center;
         }
 
         th {
@@ -85,30 +52,25 @@
         .form-control {
             width: 100%;
             padding: 5px;
-            margin: 5px 0;
+            box-sizing: border-box;
         }
 
         .btn {
-            padding-top: 6px;
-            padding-bottom: 6px;
-            font-size: 16px;
+            padding: 6px 12px;
+            font-size: 14px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin: 3px;
         }
 
         .btn-success {
             background-color: #28a745;
             color: white;
-            padding: 10px 10px;
         }
 
         .btn-dark {
             background-color: #343a40;
             color: white;
-            padding: 10px 10px;
-
         }
 
         .btn-warning {
@@ -118,12 +80,37 @@
         }
 
         .btn-danger {
-            display: block;
             background-color: #dc3545;
             color: white;
             width: 100%;
             text-align: center;
-           
+        }
+
+        td form, td a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .modal {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal h3 {
+            margin-bottom: 20px;
+        }
+
+        .modal form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
     </style>
 </head>
@@ -157,7 +144,7 @@
     echo "<tbody>";
     do {
         echo "<tr>";
-        echo "<form class='form-table' action='../mods/update/TypeRab.php' method='post'>";
+        echo "<form action='../mods/update/TypeRab.php' method='post'>";
         echo "<td><input size='1' class='form-control' name='idRab' type='text' value='$myrow[idRab]' readonly='readonly'/></td>";
         echo "<td><input size='35' class='form-control' name='NaimenRab' type='text' value='$myrow[NaimenRab]' required/></td>";
         echo "<td><input type='submit' class='btn btn-warning' value='Изменить'/></td>";

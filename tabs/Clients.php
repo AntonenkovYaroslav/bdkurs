@@ -46,7 +46,7 @@
         }
 
         form {
-            display: inline-block;
+            display: flex;
         }
 
         table {
@@ -83,13 +83,15 @@
         }
 
         .form-control {
-            width: 100%;
+            display: flex;
+            flex-direction: row; 
             padding: 5px;
-            margin: 5px 0;
+            gap: 5px;
         }
 
         .btn {
-            padding: 10px 20px;
+            padding-top: 6px;
+            padding-bottom: 6px;
             font-size: 16px;
             border: none;
             border-radius: 5px;
@@ -100,19 +102,49 @@
         .btn-success {
             background-color: #28a745;
             color: white;
+            padding: 10px 10px;
         }
 
         .btn-dark {
             background-color: #343a40;
             color: white;
+            padding: 10px 10px;
+
         }
 
         .btn-warning {
-            display: block;
-            text-align: center;
-            width: 100%;
             background-color: #ffc107;
             color: black;
+            width: 100%;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            width: 100%;
+            text-align: center;
+        }
+
+        td form, td a {
+            display: block;
+            width: 100%;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        } 
+
+        .modal {
+            display: flex;
+            max-width: 80%; 
+            margin: 0 auto; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 10px; 
+            background-color: #fff; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            
         }
     </style>
 </head>
@@ -120,7 +152,7 @@
 <body>
     <div class="modal">
         <h3>Добавить клиента</h3>
-        <form action='../mods/insert/Client.php' method='post'>
+        <form action='../mods/insert/Client.php' method='post' style='display: flex; flex-direction: column; gap: 10px;'>
             <input type="text" name="idClient" placeholder="idClient" class="form-control" required>
             <input type="text" name="FamCl" placeholder="Фамилия" class="form-control" required>
             <input type="text" name="ImyaCl" placeholder="Имя" class="form-control" required>
@@ -158,7 +190,7 @@
 
     while ($myrow = mysqli_fetch_array($r)) {
         echo "<tr>";
-        echo "<form class='form-table' action='../mods/update/Client.php' method='post'>";
+        echo "<form  action='../mods/update/Client.php' method='post' style='display: flex; flex-direction: column; gap: 10px;'>";
         echo "<td><input size='1' class='form-control' name='idClient' type='text' value='{$myrow['idClient']}' readonly='readonly'/></td>";
         echo "<td><input size='8' class='form-control' name='FamCl' type='text' value='{$myrow['FamCl']}' required/></td>";
         echo "<td><input size='7' class='form-control' name='ImyaCl' type='text' value='{$myrow['ImyaCl']}' required/></td>";

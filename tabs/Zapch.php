@@ -15,40 +15,6 @@
             color: #333;
         }
 
-        .button {
-            padding: 15px 30px;
-            font-size: 18px;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            margin: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        form {
-            display: inline-block;
-        }
-
         table {
             width: 80%;
             margin: 20px auto;
@@ -63,6 +29,7 @@
         th, td {
             padding: 10px;
             border-bottom: 1px solid #ddd;
+            text-align: center;
         }
 
         th {
@@ -85,16 +52,15 @@
         .form-control {
             width: 100%;
             padding: 5px;
-            margin: 5px 0;
+            box-sizing: border-box;
         }
 
         .btn {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 6px 12px;
+            font-size: 14px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin: 5px;
         }
 
         .btn-success {
@@ -112,36 +78,70 @@
             color: black;
             width: 100%;
         }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            width: 100%;
+            text-align: center;
+        }
+
+        td form, td a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .modal {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal h3 {
+            margin-bottom: 20px;
+        }
+
+        .modal form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="modal">
-        <h3>Добавить запчасть</h3>
-        <form action='../mods/insert/Zapch.php' method='post'>
-            <input type="text" name="idZap" placeholder="idZap" class="form-control" required>
-            <input type="text" name="NaimenZap" placeholder="Наименование запчасти" class="form-control" required>
-            <input type="text" name="CenaZap" placeholder="Цена" class="form-control" required>
-            <select class="form-control" name="TypeUsl_idUsl" required>
-                <option value="">Выберите услугу</option>
-                <?php
-                include("Db.php");
-                $query = "SELECT * FROM TypeUsl";
-                $res = mysqli_query($connect, $query);
-                if (mysqli_num_rows($res) > 0) {
-                    while ($row = mysqli_fetch_assoc($res)) {
-                        $idUsl = $row['idUsl'];
-                        $SelVal = $row['NaimenUsl'];
-                        echo "<option value='$idUsl'>$SelVal</option>";
-                    }
+<div class="modal">
+    <h3>Добавить запчасть</h3>
+    <form action='../mods/insert/Zapch.php' method='post'>
+        <input type="text" name="idZap" placeholder="ID" class="form-control" required>
+        <input type="text" name="NaimenZap" placeholder="Наименование запчасти" class="form-control" required>
+        <input type="text" name="CenaZap" placeholder="Цена" class="form-control" required>
+        <select class="form-control" name="TypeUsl_idUsl" required>
+            <option value="">Выберите услугу</option>
+            <?php
+            include("Db.php");
+            $query = "SELECT * FROM TypeUsl";
+            $res = mysqli_query($connect, $query);
+            if (mysqli_num_rows($res) > 0) {
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $idUsl = $row['idUsl'];
+                    $SelVal = $row['NaimenUsl'];
+                    echo "<option value='$idUsl'>$SelVal</option>";
                 }
-                mysqli_close($connect);
-                ?>
-            </select>
-            <button type="submit" class="btn btn-success">Добавить новую запись</button>
-            <a href="../home.php" class="btn btn-dark">Назад</a>
-        </form>
-    </div>
+            }
+            mysqli_close($connect);
+            ?>
+        </select>
+        <button type="submit" class="btn btn-success">Добавить новую запись</button>
+        <a href="../home.php" class="btn btn-dark">Назад</a>
+    </form>
+</div>
 
     <?php
     include("../tabs/Db.php");

@@ -84,9 +84,11 @@
 
         .form-control {
             display: flex;
-            
+            flex-direction: row; 
             padding: 5px;
+            margin: 0px 5px 5px 5px;
             gap: 5px;
+            width: auto;
         }
 
         .btn {
@@ -137,7 +139,7 @@
 
         .modal {
             display: flex;
-            max-width: 1100px; 
+            max-width: 80%; 
             margin: 0 auto; 
             padding: 20px; 
             border: 1px solid #ccc; 
@@ -146,7 +148,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             
         }
-        
     </style>
 </head>
 
@@ -190,6 +191,7 @@ join status on sotrudnik.idStat = status.idStat order by sotrudnik.idSotr;");
     }
     echo "<h4>Справочник - Сотрудники</h4>";
     echo "<center>";
+    echo "<div style='overflow-x:auto;'>";
     echo "<table class='table table-hover'>";
     echo "<thead>";
     echo "<tr>";
@@ -207,7 +209,7 @@ join status on sotrudnik.idStat = status.idStat order by sotrudnik.idSotr;");
     echo "<tbody>";
     while ($myrow = mysqli_fetch_array($r)) {
         echo "<tr>";
-        echo "<form action='../mods/update/Sotr.php' method='post'>";
+        echo "<form action='../mods/update/Sotr.php' method='post' style='display: flex; flex-direction: column; gap: 10px;'>";
         echo "<td><input size='1' class='form-control' name='idSotr' type='text' value='$myrow[idSotr]' readonly='readonly'/></td>";
         echo "<td><input size='15' class='form-control' name='FamSotr' type='text' value='$myrow[FamSotr]' required/></td>";
         echo "<td><input size='15' class='form-control' name='ImyaSotr' type='text' value='$myrow[ImyaSotr]' required/></td>";
@@ -220,7 +222,8 @@ join status on sotrudnik.idStat = status.idStat order by sotrudnik.idSotr;");
         echo "</form>";
         echo "</tr>";
     }
-    echo "</tbody>";
+    echo "</table>";
+    echo "</div>";
     echo "</table>";
     mysqli_close($connect);
     ?>
