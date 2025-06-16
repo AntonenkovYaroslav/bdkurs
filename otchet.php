@@ -23,20 +23,25 @@
                 visibility: visible;
             }
         }
+        .export-buttons {
+            margin: 20px 0;
+        }
     </style>
 </head>
 
 <body>
 <?php
-
 $targetFile = '../home.php';
 ?>
 
 <a href="<?php echo $targetFile; ?>" class="btn btn-dark">Назад</a>
- <?php echo "<th><button type='button' class='btn btn-success' onclick='javascript:window.print()'>Экспорт</button></th>"; ?>
-    <?php
 
+<div class="export-buttons">
+    <button type='button' class='btn btn-success' onclick='javascript:window.print()'>Экспорт в PDF (Печать)</button>
+    <a href="export_csv.php" class="btn btn-primary">Экспорт в Excel</a>
+</div>
 
+<?php
     echo "<h4>Отчет за весь период</h4>";
     echo "<center>";
     echo "<table class='table print table-hover'>";
@@ -51,8 +56,6 @@ $targetFile = '../home.php';
     echo "<th>Услуги</th>";
     echo "<th>Стоимость услуг</th>";
     echo "<th>Стоимость ремонта</th>";
-   
- 
     echo "</tr>";
     echo "</thead>";
 
